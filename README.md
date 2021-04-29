@@ -20,7 +20,7 @@ This is just my private repo working my way through the Rust By Example document
   * [6.2. TryFrom and TryInto](https://doc.rust-lang.org/stable/rust-by-example/conversion/try_from_try_into.html)
   * [6.3. To and from Strings](https://doc.rust-lang.org/stable/rust-by-example/conversion/string.html)
 * 6.error_handling
-  * *This is moved early, since the previous exercise jumps ahead with the `Result<>` return
+  * *This is moved early, since the previous exercise jumps ahead with the `Result<>` return*
   * [18.1 panic](https://doc.rust-lang.org/stable/rust-by-example/error/panic.html)
   * [18.2.1 Unpacking options with ?](https://doc.rust-lang.org/stable/rust-by-example/error/option_unwrap/question_mark.html)
   * [7. Expressions](https://doc.rust-lang.org/stable/rust-by-example/expression.html)
