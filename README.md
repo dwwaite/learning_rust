@@ -4,3 +4,16 @@ I started out working in `rust` going by [The Book](https://doc.rust-lang.org/bo
 
 Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)) for a more example-driven approach.
 
+## Contents
+
+1. [Basics](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html)
+   * Starting out without `cargo`, instead just using `rustc` to compile simple source code.
+   * This is already much nicer for this stage, as it makes stashing these outputs much simpler and keeps `git` cleaner.
+   * Covering concepts such as:
+     * Macros
+     * Assert statement
+     * Conditionals
+     * Mutability and data types (implicit assignment and explicit casting)
+     * Pass-by-reference and dereferencing
+
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#learning-where-to-find-the-ropes).
