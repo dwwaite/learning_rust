@@ -1,15 +1,3 @@
-/*
-fn main() {
-
-    let mut sum = 0.5;
-    for i in 0..10 {
-        sum += i as f64;
-        println!("Adding value {}, current total is {}", i, sum);
-    }
-    println!("Final value is {}", sum);
-}
-*/
-
 fn main() {
 
     let mut sum = 0 as i32;
