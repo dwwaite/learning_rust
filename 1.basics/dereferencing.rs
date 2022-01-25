@@ -9,10 +9,6 @@ fn main() {
 
         
     }
-    //let res1 = by_ref(&i);
-    //let res2 = by_ref(&41);
-
-    //println!("{} {}", res1,res2);
 
 }
 
