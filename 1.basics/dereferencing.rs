@@ -7,9 +7,7 @@ fn main() {
         increase_by_dereference(&mut sum, i as i32);
         println!("Current value = {}", sum);
 
-        
     }
-
 }
 
 fn increase_by_dereference(x: &mut i32, i: i32) {
