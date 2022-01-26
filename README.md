@@ -15,5 +15,7 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
      * Conditionals
      * Mutability and data types (implicit assignment and explicit casting)
      * Pass-by-reference and dereferencing
+     * Imports and using the `rustup doc` command
+     * Arrays and slices, and unwrapping `Option` types
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#learning-where-to-find-the-ropes).
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#vectors).
