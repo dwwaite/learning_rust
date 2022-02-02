@@ -17,5 +17,6 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
      * Pass-by-reference and dereferencing
      * Imports and using the `rustup doc` command
      * Arrays and slices, and unwrapping `Option` types
+     * Vectors, iterators, and windows/chunks
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#vectors).
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#more-about-vectors).
