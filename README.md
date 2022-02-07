@@ -18,5 +18,6 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
      * Imports and using the `rustup doc` command
      * Arrays and slices, and unwrapping `Option` types
      * Vectors, iterators, and windows/chunks
+     * Strings
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#more-about-vectors).
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#strings).
