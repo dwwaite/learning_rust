@@ -28,8 +28,8 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
        * [arrays_and_slices.rs](1.basics/arrays_and_slices.rs)
        * [slices_and_optionals.rs](1.basics/slices_and_optionals.rs)
        * [vector_manipulation.rs](1.basics/vector_manipulation.rs)
-       * [vectors_and_iterators.rs](1.basics/vectors_and_iterators.rs)
      * Vectors, iterators, and windows/chunks
+       * [vectors_and_iterators.rs](1.basics/vectors_and_iterators.rs)
      * Strings
        * [strings.rs](1.basics/strings.rs)
        * [strings_indexing.rs](1.basics/strings_indexing.rs)
