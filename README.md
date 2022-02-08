@@ -11,13 +11,28 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
    * This is already much nicer for this stage, as it makes stashing these outputs much simpler and keeps `git` cleaner.
    * Covering concepts such as:
      * Macros
+       * [hello.rs](1.basics/hello.rs)
      * Assert statement
-     * Conditionals
+       * [assert_pass.rs](1.basics/assert_pass.rs)
+       * [assert_fail.rs](1.basics/assert_fail.rs)
+     * Loops and conditionals
+       * [loop_with_conditional.rs](1.basics/loop_with_conditional.rs)
+       * [loop_without_ternary.rs](1.basics/loop_without_ternary.rs)
      * Mutability and data types (implicit assignment and explicit casting)
+       * [mutability.rs](1.basics/mutability.rs)
+       * [casting_values.rs](1.basics/casting_values.rs)
      * Pass-by-reference and dereferencing
+       * [dereferencing.rs](1.basics/dereferencing.rs)
      * Imports and using the `rustup doc` command
      * Arrays and slices, and unwrapping `Option` types
+       * [arrays_and_slices.rs](1.basics/arrays_and_slices.rs)
+       * [slices_and_optionals.rs](1.basics/slices_and_optionals.rs)
+       * [vector_manipulation.rs](1.basics/vector_manipulation.rs)
+       * [vectors_and_iterators.rs](1.basics/vectors_and_iterators.rs)
      * Vectors, iterators, and windows/chunks
      * Strings
+       * [strings.rs](1.basics/strings.rs)
+       * [strings_indexing.rs](1.basics/strings_indexing.rs)
+       * [strings_functions.rs](1.basics/strings_functions.rs)
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#strings).
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#interlude-getting-command-line-arguments).
