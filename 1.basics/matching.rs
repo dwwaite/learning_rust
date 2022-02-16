@@ -30,7 +30,9 @@ fn main() {
     println!("");
     println!("Matching with fallback case:");
 
-    for i in &[10, 15, 20, 25, 30] {
+    let my_array = [10, 15, 20, 25, 30];
+
+    for i in &my_array {
 
         let message = match i {
 
@@ -49,7 +51,7 @@ fn main() {
     println!("");
     println!("Matching with ranges:");
 
-    for i in &[10, 15, 20, 25, 30] {
+    for i in &my_array {
 
         let message = match i {
 
