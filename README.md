@@ -36,5 +36,6 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
        * [strings_functions.rs](1.basics/strings_functions.rs)
      * Parsing command line arguments
        * [command_line_capture.rs](1.basics/1.basics/command_line_capture.rs)
+       * [matching.rs](1.basics/matching.rs)
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#matching).
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html#reading-from-files).
