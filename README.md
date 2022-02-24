@@ -29,3 +29,21 @@ gunzip E_coli.fna.gz
 ```
 
 For interest, I'm creating a few alternatives in `python` to see how speed differs compared with `rust`. As my tutorials have not yet covered `structs`, I will not use classes in the `python` version and will try to keep the level of `python` roughly equivalent to what my `rust` is (i.e. no `argparse`). That said, I will use things like comprehensions, because they're a big part of speeding up `python`.
+
+```bash
+time python3 projects/basics.py E_coli.fna 8 > /dev/null
+# real    0m34.940s
+
+time python3 projects/basics_optimised.py E_coli.fna 8 > /dev/null
+# real    0m2.071s
+
+rustc projects/basics.rs
+time ./basics E_coli.fna 8 > /dev/null
+# real    0m17.717s
+
+rustc -O projects/basics.rs
+time ./basics E_coli.fna 8 > /dev/null
+# real    0m1.165s
+```
+
+Already my absolute beginner `rust` is more efficient that my `python`. Awesome.
