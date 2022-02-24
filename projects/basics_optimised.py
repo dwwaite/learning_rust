@@ -1,5 +1,5 @@
+from email.policy import default
 import sys
-from itertools import islice
 from typing import Dict, List
 from collections import defaultdict
 
@@ -52,14 +52,9 @@ def tally_kmer_observations(contig_list: List[str], kmer_size: int) -> Dict[str,
 
     for contig_sequence in contig_list:
 
-        contig_iter = iter(contig_sequence)
-        result = tuple(islice(contig_iter, kmer_size))
+        for i in range(0, len(contig_sequence) - kmer_size + 1):
 
-        for elem in contig_iter:
-
-            result = result[1:] + (elem,)
-            kmer = ''.join(result)
-
+            kmer = contig_sequence[i:i+kmer_size]
             obs_dict[kmer] += 1
 
     return obs_dict

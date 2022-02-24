@@ -35,7 +35,7 @@ time python3 projects/basics.py E_coli.fna 8 > /dev/null
 # real    0m27.606s
 
 time python3 projects/basics_optimised.py E_coli.fna 8 > /dev/null
-# real    0m2.071s
+# real    0m1.108s
 
 rustc projects/basics.rs
 time ./basics E_coli.fna 8 > /dev/null
