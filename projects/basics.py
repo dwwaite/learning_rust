@@ -1,7 +1,5 @@
 import sys
-from itertools import islice
 from typing import Dict, List
-from collections import defaultdict
 
 def main():
 
@@ -55,19 +53,18 @@ def parse_sequence_file(file_path: str) -> List[str]:
 def tally_kmer_observations(contig_list: List[str], kmer_size: int) -> Dict[str,int]:
     ''' Performing a sliding window over each entry in the contig list, adding to each observation of k-mer. '''
 
-    obs_dict = defaultdict(lambda: 0)
+    obs_dict = {}
 
     for contig_sequence in contig_list:
 
-        contig_iter = iter(contig_sequence)
-        result = tuple(islice(contig_iter, kmer_size))
+        for i in range(0, len(contig_sequence) - kmer_size + 1):
 
-        for elem in contig_iter:
+            kmer = contig_sequence[i:i+kmer_size]
 
-            result = result[1:] + (elem,)
-            kmer = ''.join(result)
-
-            obs_dict[kmer] += 1
+            if kmer in obs_dict:
+                obs_dict[kmer] += 1
+            else:
+                obs_dict[kmer] = 1
 
     return obs_dict
 
