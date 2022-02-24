@@ -32,7 +32,7 @@ For interest, I'm creating a few alternatives in `python` to see how speed diffe
 
 ```bash
 time python3 projects/basics.py E_coli.fna 8 > /dev/null
-# real    0m34.940s
+# real    0m27.606s
 
 time python3 projects/basics_optimised.py E_coli.fna 8 > /dev/null
 # real    0m2.071s
