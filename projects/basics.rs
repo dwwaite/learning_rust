@@ -49,34 +49,26 @@ fn extract_contig_sequences(input_string: &str) -> Vec<String> {
     let mut on_header: bool = false;
 
     for c in input_string.chars() {
-
         // If we are dealing with a header line...
         if c == '>' {
-
             // ...set the flag...
             on_header = true;
-
             // ...and cycle the current contig sequence *if* there is any content in it
             if current_contig.len() > 0 {
                 contig_list.push(current_contig);
                 current_contig = String::new();
             }
-
         // Otherwise, if we hit the end of the header line set the flag appropriately
         } else if c == '\n' && on_header {
-
             on_header = false;
-
         /* Finally, if we know we are not on a header character, store it into the current record
          *    as long as it is not a newline.
          */
         } else if !on_header && c != '\n' {
-
             current_contig += &c.to_string();
-
         }
     }
-    
+
     // Final tidy up - push the final entry and return
     contig_list.push(current_contig);
 
@@ -98,17 +90,13 @@ fn tally_kmer_observations(contig_list: &Vec<String>, kmer_size: usize) -> HashM
         let contig_array: Vec<char> = contig_sequence.chars().collect();
 
         for contig_kmer in contig_array.windows(kmer_size) {
-
             // Update the total number of k-mers
             n_kmers += 1;
-
             // Compress the &[char] into a String
             let mut kmer = String::new();
-
             for c in contig_kmer {
                 kmer += &c.to_string();
             }
-
             // Update the hashmap
             *kmer_observations.entry(kmer).or_insert(0) += 1;
         }
@@ -119,11 +107,8 @@ fn tally_kmer_observations(contig_list: &Vec<String>, kmer_size: usize) -> HashM
     let mut kmer_frequencies: HashMap<String, f64> = HashMap::new();
 
     for (kmer, obs) in kmer_observations {
-
         let freq = (obs / n_kmers) as f64;
-
         kmer_frequencies.insert(kmer, freq);
-
     }
 
     kmer_frequencies
