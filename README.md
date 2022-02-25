@@ -47,3 +47,7 @@ time ./basics E_coli.fna 8 > /dev/null
 ```
 
 Already my absolute beginner `rust` is more efficient that my `python`. Awesome.
+
+However, there were definitely some teething issues when working here. For example, I have to read the sequences in as `String`s, but then use the window function to slide over a vector of `char`s. I tried to replace the unncessary casting by just reading in as a vector of `char`s from the start but I encountered some errors that I could not solve at my current level. Best to park it as a good first attempt, then continue to learn about `rust` and see if the solutions arise.
+
+---
