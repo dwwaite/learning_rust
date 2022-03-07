@@ -8,8 +8,10 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
 
 1. [Basics](https://stevedonovan.github.io/rust-gentle-intro/1-basics.html)
    * List of what was covered and example code [here](docs/1.basics.md).
+1. [Structs, enums, and matching](https://stevedonovan.github.io/rust-gentle-intro/2-structs-enums-lifetimes.html)
+   * List of what was covered and example code [here](docs/2.structs_enums.md).
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/2-structs-enums-lifetimes.html).
+Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/2-structs-enums-lifetimes.html#tuples).
 
 ---
 
