@@ -75,13 +75,26 @@ gunzip R_multiflora.fna.gz
 grep -c ">" R_multiflora.fna
 # 83,189
 
-time python3 projects/basics_structs.py R_multiflora.fna 8 > /dev/null
+time python3 projects/basics_structs_char.py R_multiflora.fna 8 > /dev/null
 # real    6m9.736s
 
-time ./basics_structs R_multiflora.fna 8 > /dev/null
+time ./basics_structs_char R_multiflora.fna 8 > /dev/null
 # real    4m24.882s
 ```
 
 So there's a significant `rust` advantage, not even factoring in the fact that the `python` version uses a much faster file reading method (read whole file then slice in RAM) compared with the `rust` version (read line by line).
+
+Final thing I want to try, is to use a different implementation of the `sequence` field of the `SeqRecord` struct. Rather than process it as a `Vec<char>` the whole way through, keep it as a `String` while building, then convert to the `Vec<char>` for computing the *k*-mer tally.
+
+```bash
+rustc -O projects/basics_structs_string.rs
+time ./basics_structs_string E_coli.fna 8 > /dev/null
+# real    0m0.670s
+
+time ./basics_structs_string R_multiflora.fna 8 > /dev/null
+# real    4m28.368s
+```
+
+Interesting discovery, they're basically equivalent. Really nice to know, because building a `String` is much simpler (tidier) than extending a vector. Will remember this for future work.
 
 ---
