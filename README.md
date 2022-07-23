@@ -11,8 +11,6 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
 1. [Structs, enums, and matching](https://stevedonovan.github.io/rust-gentle-intro/2-structs-enums-lifetimes.html)
    * List of what was covered and example code [here](docs/2.structs_enums.md).
 
-Currently up to [here](https://stevedonovan.github.io/rust-gentle-intro/2-structs-enums-lifetimes.html#tuples).
-
 ---
 
 ## Test projects
@@ -51,5 +49,37 @@ time ./basics E_coli.fna 8 > /dev/null
 Already my absolute beginner `rust` is more efficient that my `python`. Awesome.
 
 However, there were definitely some teething issues when working here. For example, I have to read the sequences in as `String`s, but then use the window function to slide over a vector of `char`s. I tried to replace the unncessary casting by just reading in as a vector of `char`s from the start but I encountered some errors that I could not solve at my current level. Best to park it as a good first attempt, then continue to learn about `rust` and see if the solutions arise.
+
+---
+
+#### Basics with structs
+
+This is basically an extension on the previous project, making use of the structs and enums tutorials. In this instance, I'm not really going for speed but just trying to implement a sensible fasta struct. I know from reading ahead that the *next* section of the tutorials revisits file reading and I'll probably get some efficiency improvements there, so for now just focus on clean code.
+
+This time around, I want a larger and more fragmented genome. I'm also going to ignore the global *k*-mer frequency calculation - for this implementation there is only a per-contig *k*-mer tally. This will require a new `python` equivalent (`basics_structs.py`) which is based off the `basics_optimised.py` script.
+
+```bash
+time python3 projects/basics_structs.py E_coli.fna 8 > /dev/null
+# real    0m1.881s
+
+rustc -O projects/basics_structs.rs
+time ./basics_structs E_coli.fna 8 > /dev/null
+# real    0m0.904s
+```
+
+Slight advantage, but there's a fair amount of I/O here, relative to the amount of processing, so try with a larger file to check the computation:
+
+```bash
+wget -O R_multiflora.fna.gz https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/002/564/525/GCA_002564525.1_RMU_r2.0/GCA_002564525.1_RMU_r2.0_genomic.fna.gz
+gunzip R_multiflora.fna.gz
+grep -c ">" R_multiflora.fna
+# 83,189
+
+time python3 projects/basics_structs.py R_multiflora.fna 8 > /dev/null
+# real    6m9.736s
+
+time ./basics_structs R_multiflora.fna 8 > /dev/null
+# real    4m24.882s
+```
 
 ---
