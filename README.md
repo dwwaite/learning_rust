@@ -82,4 +82,6 @@ time ./basics_structs R_multiflora.fna 8 > /dev/null
 # real    4m24.882s
 ```
 
+So there's a significant `rust` advantage, not even factoring in the fact that the `python` version uses a much faster file reading method (read whole file then slice in RAM) compared with the `rust` version (read line by line).
+
 ---
