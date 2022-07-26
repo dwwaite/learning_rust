@@ -103,6 +103,6 @@ time ./basics_structs_read R_multiflora.fna 8 > /dev/null
 # real    4m45.364s
 ```
 
-This is actually the worst option, although the code does simplify quite a bit.
+This is actually the worst option, although the code does simplify quite a bit. I'm unsure if this is due to the way I changed the way character case is handled, or the inefficiency of one `push()` per character, rather than the less frequent `extend()` calls in the other versions. 
 
 ---
