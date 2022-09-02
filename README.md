@@ -10,6 +10,15 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
    * List of what was covered and example code [here](docs/1.basics.md).
 1. [Structs, enums, and matching](https://stevedonovan.github.io/rust-gentle-intro/2-structs-enums-lifetimes.html)
    * List of what was covered and example code [here](docs/2.structs_enums.md).
+1. [Filesystem - paths, files, and processes](https://stevedonovan.github.io/rust-gentle-intro/3-filesystem.html)
+   * List of what was covered and example code [here](docs/3.filesystem.md).
+1. [Modules and cargo](https://stevedonovan.github.io/rust-gentle-intro/4-modules.html)
+   * Skipping this section, as I'm already familiar with cargo usage.
+   * It is worth revisiting though, as there is some neat examples of serde streaming which I may want to dig into at a later date.
+1. [Standard library containers (vectors, maps etc.)](https://stevedonovan.github.io/rust-gentle-intro/5-stdlib-containers.html)
+   * List of what was covered and example code [here](docs/5.containers.md).
+   * Some of the examples in the tutorial are skipped as they deep-dive into areas I do not want to get bogged down with at the moment.
+   * During the `map` example, there is a good closure for removing non-alphabetic characters from a string - keep it in mind.
 
 ---
 
