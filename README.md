@@ -19,6 +19,10 @@ Trying a new tutorial ([here](https://stevedonovan.github.io/rust-gentle-intro/)
    * List of what was covered and example code [here](docs/5.containers.md).
    * Some of the examples in the tutorial are skipped as they deep-dive into areas I do not want to get bogged down with at the moment.
    * During the `map` example, there is a good closure for removing non-alphabetic characters from a string - keep it in mind.
+   * The `set` example also has a great example of how the `.collect()` function can return multiple variable containers, based on the return type of a function.
+1. [Error handling](https://stevedonovan.github.io/rust-gentle-intro/6-error-handling.html)
+   * The previous section had a good notion, that you should never actually use `.unwrap()`, that's just for example code, real tools should always inspect the contents of a `Result<>` and process it. In my project work, it is certainly easier to just run any `Result<>` through a `match` statement to unpack it rather than call to `.unwrap()`.
+   * List of what was covered and example code [here](docs/6.error_handling.md).
 
 ---
 
