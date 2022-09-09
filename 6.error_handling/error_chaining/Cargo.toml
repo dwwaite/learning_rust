@@ -1,0 +1,7 @@
+[package]
+name = "error_chaining"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+error-chain = "0.12.4"
