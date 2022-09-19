@@ -48,18 +48,18 @@ grep -c ">" R_multiflora.fna
 At this point all I really know how to do is pass to functions, parse command line arguments, and read files. This is all I need to be able to do to create a *k*-mer frequency calculator for a genome. For interest, I'm creating a few alternatives in `python` to see how speed differs compared with `rust`. As my tutorials have not yet covered `structs`, I will not use classes in the `python` version and will try to keep the level of `python` roughly equivalent to what my `rust` is (i.e. no `argparse`). That said, I will use things like comprehensions, because they're a big part of speeding up `python`.
 
 ```bash
-time python3 projects/basics.py E_coli.fna 8 > /dev/null
+time python3 projects/fasta_parser.py E_coli.fna 8 > /dev/null
 # real    0m27.606s
 
-time python3 projects/basics_optimised.py E_coli.fna 8 > /dev/null
+time python3 projects/fasta_parser_opt.py E_coli.fna 8 > /dev/null
 # real    0m1.108s
 
-rustc projects/basics.rs
-time ./basics E_coli.fna 8 > /dev/null
+rustc projects/fasta_parser.rs
+time ./fasta_parser E_coli.fna 8 > /dev/null
 # real    0m17.717s
 
-rustc -O projects/basics.rs
-time ./basics E_coli.fna 8 > /dev/null
+rustc -O projects/fasta_parser.rs
+time ./fasta_parser E_coli.fna 8 > /dev/null
 # real    0m1.165s
 ```
 
@@ -76,43 +76,43 @@ This is basically an extension on the previous project, making use of the struct
 This time around, I want a larger and more fragmented genome. I'm also going to ignore the global *k*-mer frequency calculation - for this implementation there is only a per-contig *k*-mer tally. This will require a new `python` equivalent (`basics_structs.py`) which is based off the `basics_optimised.py` script.
 
 ```bash
-time python3 projects/basics_structs.py E_coli.fna 8 > /dev/null
+time python3 projects/fasta_structs.py E_coli.fna 8 > /dev/null
 # real    0m1.881s
 
-rustc -O projects/basics_structs.rs
-time ./basics_structs E_coli.fna 8 > /dev/null
+rustc -O projects/fasta_structs.rs
+time ./fasta_structs E_coli.fna 8 > /dev/null
 # real    0m0.904s
 ```
 
 Slight advantage, but there's a fair amount of I/O here, relative to the amount of processing, so try with a larger file to check the computation:
 
 ```bash
-time python3 projects/basics_structs_char.py R_multiflora.fna 8 > /dev/null
+time python3 projects/fasta_structs.py R_multiflora.fna 8 > /dev/null
 # real    6m9.736s
 
-time ./basics_structs_char R_multiflora.fna 8 > /dev/null
+time ./fasta_structs R_multiflora.fna 8 > /dev/null
 # real    4m24.882s
 ```
 
 So there's a significant `rust` advantage, not even factoring in the fact that the `python` version uses a much faster file reading method compared with the `rust` version where I read as `char`, cast to `String`, then process as a combination of `Vec<char` and `String`, resulting in a lot of type conversions. The next thing I want to try is to use a different implementation of the `sequence` field of the `SeqRecord` struct. Rather than process it as a `Vec<char>` the whole way through, keep it as a `String` while building, then convert to the `Vec<char>` for computing the *k*-mer tally.
 
 ```bash
-rustc -O projects/basics_structs_string.rs
-time ./basics_structs_string E_coli.fna 8 > /dev/null
+rustc -O projects/fasta_structs_var1.rs
+time ./fasta_structs_var1 E_coli.fna 8 > /dev/null
 # real    0m0.670s
 
-time ./basics_structs_string R_multiflora.fna 8 > /dev/null
+time ./fasta_structs_var1 R_multiflora.fna 8 > /dev/null
 # real    4m28.368s
 ```
 
 Interesting discovery, they're basically equivalent. Really nice to know, because building a `String` is much simpler (tidier) than extending a vector. Will remember this for future work. Finally, I want to try an implementation where everything is read as a single `Vec<char` and then handled as such, only casting off to `String` where necessary.
 
 ```bash
-rustc -O projects/basics_structs_read.rs
-time ./basics_structs_read E_coli.fna 8 > /dev/null
+rustc -O projects/fasta_structs_var2.rs
+time ./fasta_structs_var2 E_coli.fna 8 > /dev/null
 # real    0m0.584s
 
-time ./basics_structs_read R_multiflora.fna 8 > /dev/null
+time ./fasta_structs_var2 R_multiflora.fna 8 > /dev/null
 # real    4m45.364s
 ```
 
