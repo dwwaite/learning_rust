@@ -7,8 +7,6 @@ use std::collections::HashMap;
 
 fn main() {
 
-    // This is not a complete rewrite, as parts o 
-
     // Capture the user inputs
     let file_path = env::args().nth(1).unwrap();
     let kmer_input = env::args().nth(2).unwrap();
