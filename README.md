@@ -143,7 +143,7 @@ There are a few things to do here. Primarily, this is an oppotunity to move from
 
 ```bash
 time ./projects/fasta_structs/target/release/fasta_structs -i R_multiflora.fna -k 8 > /dev/null
-# real    5m19.360s
+# real    5m9.360s
 ```
 
 ---
