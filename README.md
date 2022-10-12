@@ -43,6 +43,14 @@ grep -c ">" R_multiflora.fna
 # 83,189
 ```
 
+Projects:
+
+* [Basics](#basics)
+* [Basics with structs](#basics-with-structs)
+* [Converting to cargo project](#converting-to-cargo-project)
+
+---
+
 #### Basics
 
 At this point all I really know how to do is pass to functions, parse command line arguments, and read files. This is all I need to be able to do to create a *k*-mer frequency calculator for a genome. For interest, I'm creating a few alternatives in `python` to see how speed differs compared with `rust`. As my tutorials have not yet covered `structs`, I will not use classes in the `python` version and will try to keep the level of `python` roughly equivalent to what my `rust` is (i.e. no `argparse`). That said, I will use things like comprehensions, because they're a big part of speeding up `python`.
@@ -94,7 +102,7 @@ time ./fasta_structs R_multiflora.fna 8 > /dev/null
 # real    4m24.882s
 ```
 
-So there's a significant `rust` advantage, not even factoring in the fact that the `python` version uses a much faster file reading method compared with the `rust` version where I read as `char`, cast to `String`, then process as a combination of `Vec<char` and `String`, resulting in a lot of type conversions. The next thing I want to try is to use a different implementation of the `sequence` field of the `SeqRecord` struct. Rather than process it as a `Vec<char>` the whole way through, keep it as a `String` while building, then convert to the `Vec<char>` for computing the *k*-mer tally.
+So there's a significant `rust` advantage, not even factoring in the fact that the `python` version uses a much faster file reading method compared with the `rust` version where I read as `char`, cast to `String`, then process as a combination of `Vec<char>` and `String`, resulting in a lot of type conversions. The next thing I want to try is to use a different implementation of the `sequence` field of the `SeqRecord` struct. Rather than process it as a `Vec<char>` the whole way through, keep it as a `String` while building, then convert to the `Vec<char>` for computing the *k*-mer tally.
 
 ```bash
 rustc -O projects/fasta_structs_var1.rs
@@ -105,7 +113,7 @@ time ./fasta_structs_var1 R_multiflora.fna 8 > /dev/null
 # real    4m28.368s
 ```
 
-Interesting discovery, they're basically equivalent. Really nice to know, because building a `String` is much simpler (tidier) than extending a vector. Will remember this for future work. Finally, I want to try an implementation where everything is read as a single `Vec<char` and then handled as such, only casting off to `String` where necessary.
+Interesting discovery, they're basically equivalent. Really nice to know, because building a `String` is much simpler (tidier) than extending a vector. Will remember this for future work. Finally, I want to try an implementation where everything is read as a single `Vec<char>` and then handled as such, only casting off to `String` where necessary.
 
 ```bash
 rustc -O projects/fasta_structs_var2.rs
@@ -117,5 +125,25 @@ time ./fasta_structs_var2 R_multiflora.fna 8 > /dev/null
 ```
 
 This is actually the worst option, although the code does simplify quite a bit. I'm unsure if this is due to the way I changed the way character case is handled, or the inefficiency of one `push()` per character, rather than the less frequent `extend()` calls in the other versions. 
+
+---
+
+### Converting to cargo project
+
+There are a few things to do here. Primarily, this is an oppotunity to move from the basic `rustc` format into a proper `cargo` project and to add a few dependencies. Main outcomes here:
+
+1. Transition into a `cargo` project
+1. Use `error_chain` to better handle errors
+1. Use `clap` for command line parameters
+1. Experiment with new fasta reading methods
+   1. In prodution code I have written for work, I use the [seq_io](https://docs.rs/seq_io/latest/seq_io/) crate for reading and writing fasta/fastq files.
+   1. I doubt I'll be able to beat this here, but this is more a lesson in learning better ways to handle the file reading for my own learning.
+
+>**TODO:** Try to implement the `String` extending method used in `fasta_structs_var1.rs` for the speed. Not sure if it's compatible with the `BufReader::read_until()` function...
+
+```bash
+time ./projects/fasta_structs/target/release/fasta_structs -i R_multiflora.fna -k 8 > /dev/null
+# real    5m19.360s
+```
 
 ---
